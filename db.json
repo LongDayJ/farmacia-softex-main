@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "nome": "",
+    "preco": 10,
+    "categoria": "analgesico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 2,
+    "nome": "Dipirona Monoidratada",
+    "preco": 15,
+    "categoria": "analgesico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 3,
+    "nome": "neosaldina",
+    "preco": 15,
+    "categoria": "analgesico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 4,
+    "nome": "Dorflex",
+    "preco": 10,
+    "categoria": "analgesico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 5,
+    "nome": "Novalgina",
+    "preco": 15,
+    "categoria": "analgesico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 6,
+    "nome": "Nimesulida",
+    "preco": 20,
+    "categoria": "anti-inflamatorio",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 7,
+    "nome": "Diclofenaco",
+    "preco": 15,
+    "categoria": "anti-inflamatorio",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 8,
+    "nome": "Ibuprofeno",
+    "preco": 25,
+    "categoria": "anti-inflamatorio",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 9,
+    "nome": "Toragesic",
+    "preco": 30,
+    "categoria": "anti-inflamatorio",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 10,
+    "nome": "AAs",
+    "preco": 30,
+    "categoria": "anti-inflamatorio",
+    "controlado": false,
+    "quantidade": 19
+  },
+  {
+    "id": 11,
+    "nome": "Amoxicilina",
+    "preco": 40,
+    "categoria": "antibiotico",
+    "controlado": true,
+    "quantidade": 20
+  },
+  {
+    "id": 12,
+    "nome": "Clavulin BD",
+    "preco": 50,
+    "categoria": "antibiotico",
+    "controlado": true,
+    "quantidade": 20
+  },
+  {
+    "id": 13,
+    "nome": "Azitromicina Di-Hidratada",
+    "preco": 40,
+    "categoria": "antibiotico",
+    "controlado": true,
+    "quantidade": 20
+  },
+  {
+    "id": 14,
+    "nome": "Ciprofloxacina",
+    "preco": 40,
+    "categoria": "antibiotico",
+    "controlado": true,
+    "quantidade": 20
+  },
+  {
+    "id": 15,
+    "nome": "Sulfametoxazol",
+    "preco": 25,
+    "categoria": "antibiotico",
+    "controlado": true,
+    "quantidade": 20
+  },
+  {
+    "id": 16,
+    "nome": "Allegra",
+    "preco": 25,
+    "categoria": "antialergico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 17,
+    "nome": "Polaramine",
+    "preco": 20,
+    "categoria": "antialergico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 18,
+    "nome": "Histamin",
+    "preco": 25,
+    "categoria": "antialergico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 19,
+    "nome": "Alektos",
+    "preco": 30,
+    "categoria": "antialergico",
+    "controlado": false,
+    "quantidade": 20
+  },
+  {
+    "id": 20,
+    "nome": "Loratadina",
+    "preco": 20,
+    "categoria": "antialergico",
+    "controlado": false,
+    "quantidade": 20
+  }
+]

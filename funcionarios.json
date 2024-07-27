@@ -1,0 +1,51 @@
+[
+  {
+    "id": "37541053023",
+    "nome": "Juarez José",
+    "pin": "21436587",
+    "email": "juuarezjose92@gmail.com",
+    "administrator": true
+  },
+  {
+    "id": "111111",
+    "nome": "camila",
+    "email": "ca",
+    "pin": "12",
+    "administrador": false
+  },
+  {
+    "id": "11122233344",
+    "nome": "camila",
+    "email": "camila@gmail.com",
+    "pin": "1234",
+    "administrador": true
+  },
+  {
+    "id": "111",
+    "nome": "cami",
+    "email": "cami@hotmail.com",
+    "pin": "123456",
+    "administrador": true
+  },
+  {
+    "id": "111",
+    "nome": "111",
+    "email": "",
+    "pin": "",
+    "administrador": false
+  },
+  {
+    "id": "111",
+    "nome": "c",
+    "email": "c@",
+    "pin": "12",
+    "administrador": true
+  },
+  {
+    "id": "1",
+    "nome": "1",
+    "email": "1",
+    "pin": "1",
+    "administrador": true
+  }
+]
