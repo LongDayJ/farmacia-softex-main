@@ -47,5 +47,40 @@
     "email": "1",
     "pin": "1",
     "administrador": true
+  },
+  {
+    "id": "1",
+    "nome": "a",
+    "email": "a",
+    "pin": "a",
+    "administrador": false
+  },
+  {
+    "id": "5",
+    "nome": "5",
+    "email": "6",
+    "pin": "5",
+    "administrador": true
+  },
+  {
+    "id": "5",
+    "nome": "5",
+    "email": "5",
+    "pin": "5",
+    "administrador": false
+  },
+  {
+    "id": "5",
+    "nome": "5",
+    "email": "5",
+    "pin": "5",
+    "administrador": false
+  },
+  {
+    "id": "8",
+    "nome": "7",
+    "email": "7",
+    "pin": "7",
+    "administrador": true
   }
 ]

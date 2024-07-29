@@ -1,6 +1,12 @@
-const prompt = require("prompt-sync")();
-const funcionarios = require("./funcionarios.json");
-const fs = require("fs"); // módulo file sytem
+import promptSync from 'prompt-sync';
+import fs from 'fs';
+import chalk from 'chalk';
+import funcionarios from './funcionarios.json' assert { type: 'json' };
+import { log } from 'console';
+
+const prompt = promptSync();
+
+logo();
 
 // Função para carregar o arquivo JSON
 function listaRemedios() {
@@ -12,34 +18,27 @@ function listaRemedios() {
     return [];
   }
 }
+
 // Função para salvar os remédios no arquivo JSON
 function salvarRemedios() {
   try {
     fs.writeFileSync("./db.json", JSON.stringify(remedios, null, 2), "utf-8"); // utiliza o writeFileSync do módulo fs para escrever a string JSON no arquivo db.json. O JSON.stringfy converte o objeto remedios em uma string JSON
-    console.log("");
   } catch (err) {
     console.error("Erro ao salvar o arquivo JSON:", err);
   }
 }
-console.log(`\n
-███████╗ █████╗ ██████╗ ███╗   ███╗ █████╗ ████████╗███████╗██╗  ██╗
-██╔════╝██╔══██╗██╔══██╗████╗ ████║██╔══██╗╚══██╔══╝██╔════╝╚██╗██╔╝
-█████╗  ███████║██████╔╝██╔████╔██║███████║   ██║   █████╗   ╚███╔╝ 
-██╔══╝  ██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║   ██║   ██╔══╝   ██╔██╗ 
-██║     ██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║   ██║   ███████╗██╔╝ ██╗
-╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
-`);
 
 // Carregar remédios do arquivo JSON
 let remedios = listaRemedios();
 
 function criarFuncionario() {
-  console.log("Bem vindo ao sistema de cadastro de funcionario!");
+  console.log(chalk.blue("Bem vindo ao sistema de cadastro de funcionario!"));
+  console.log("");
   let id = prompt("Digite o cpf do funcionário (sem pontuação, apenas números): ");
   let nome = prompt("Digite o nome do funcionário: ");
   let email = prompt("Digite o email do funcionário: ");
   let pin = prompt("Peça para o funcionário inserir uma senha: ");
-  let isAdmin = prompt("Esse funcionário será administrador?(s/n) ");
+  let isAdmin = prompt(chalk.blue('Esse funcionário será administrador? (') + (chalk.green('s')) + chalk.blue('/') + (chalk.red('n')) + chalk.blue(")"));
 
   let roleAdmin = false; 
   if (isAdmin.toLowerCase() === "s") 
@@ -58,7 +57,7 @@ function criarFuncionario() {
 
   funcionarios.push(novoFuncionario);
 
-  console.log("Funcionário cadastrado com sucesso!"); 
+  console.log(chalk.green("\nFuncionário cadastrado com sucesso!")); 
 }
 
 function loginFuncionario() {
@@ -75,7 +74,7 @@ function loginFuncionario() {
     }
   }
   if (!funcionarioEncontrado) {
-    console.log("E-mail ou senha incorretos");
+    console.log(chalk.red("\nE-mail ou senha incorretos"));
   }
 }
 
@@ -93,7 +92,7 @@ function carregarFuncionarios() {
     return JSON.parse(dadosFuncionarios);
   } catch (err) {
     // Se houver um erro ao ler o arquivo (por exemplo, arquivo não existente), retorna uma lista vazia
-    console.log("Erro ao carregar funcionários:", err);
+    console.log(chalk.red("Erro ao carregar funcionários:"), err);
     return [];
   }
 }
@@ -104,20 +103,22 @@ carregarFuncionarios();
 
 
 function updateMedicine() {
-  console.log("Lista de remédios disponíveis: ");
+  console.log(chalk.blue("\nLista de remédios disponíveis: "));
   remedios.forEach((remedio, index) => {
     console.log(`${index + 1}. ${remedio.nome}`);
   });
 
-  let buscadorRemedio = Number(prompt(`Qual remédio você deseja alterar?`));
+  console.log("");
+  let buscadorRemedio = Number(prompt(chalk.yellow(`Qual remédio você deseja alterar?`)));
 
   for (let i = 0; i < remedios.length; i++) {
     if (buscadorRemedio == remedios[i].id) {
       console.log(
-        `1 - Nome\n2 - Preço\n3 - Categoria\n4 - Necessidade de Receita\n5 - Quantidade`
-      );
+      chalk.blue(`1 - Nome\n2 - Preço\n3 - Categoria\n4 - Necessidade de Receita\n5 - Quantidade`
+      ));
+      console.log("");
       let info = Number(
-        prompt(`Qual informação do remédio você deseja alterar? `)
+        prompt(chalk.yellow(`Qual informação do remédio você deseja alterar? `))
       );
       switch (info) {
         case 1:
@@ -125,34 +126,34 @@ function updateMedicine() {
             `Qual será o novo nome do remédio ${remedios[i].nome}? `
           );
           remedios[i].nome = novoNome;
-          console.log(`O nome do remédio foi atualizado`);
+          console.log(chalk.green(`\nO nome do remédio foi atualizado`));
           break;
         case 2:
           let novoPreco = Number(
             prompt(`Qual será o novo preço do remédio ${remedios[i].nome}? `)
           );
           remedios[i].preco = novoPreco;
-          console.log(`O preço do remédio foi atualizado`);
+          console.log(chalk.green(`O preço do remédio foi atualizado`));
           break;
         case 3:
           let novaCategoria = prompt(
             `Qual será a nova categoria do remédio ${remedios[i].nome}? `
           );
           remedios[i].categoria = novaCategoria;
-          console.log(`A Categoria do remédio foi atualizada`);
+          console.log(chalk.green(`A Categoria do remédio foi atualizada`));
           break;
         case 4:
           let novaNecessidade = prompt(
-            `O remédio ${remedios[i].nome} irá precisar de receita?(S/n)`
-          );
+            chalk.blue(`O remédio ${remedios[i].nome} irá precisar de receita?) (`) + chalk.green(`S`) + chalk.blue(`/`) + chalk.red(`n`) + chalk.blue(")"));
+
           if (novaNecessidade.toLowerCase() == "s") {
             remedios[i].controlado = true;
-            console.log(`Agora o remédio necessitará de receita`);
+            console.log(chalk.green(`Agora o remédio necessitará de receita`));
           } else if (novaNecessidade.toLowerCase() == "n") {
             remedios[i].controlado = false;
-            console.log(`Agora o remédio NÃO necessitará de receita`);
+            console.log(chalk.green(`Agora o remédio NÃO necessitará de receita`));
           } else {
-            console.log(`ERRO`);
+            console.log(chalk.red(`ERRO`));
           }
           break;
         case 5:
@@ -162,10 +163,10 @@ function updateMedicine() {
             )
           );
           remedios[i].quantidade = novaQuantidade;
-          console.log(`A quantidade do remédio foi atualizada`);
+          console.log(chalk.green(`A quantidade do remédio foi atualizada`));
           break;
         default:
-          console.log(`ERRO`);
+          console.log(chalk.red(`ERRO`));
           break;
       }
       salvarRemedios(remedios);
@@ -174,7 +175,7 @@ function updateMedicine() {
   }
 }
 
-console.log(`Olá, estas são as categorias disponíveis:`);
+
 
 let categorias = [...new Set(remedios.map((remedio) => remedio.categoria))];
 
@@ -185,8 +186,8 @@ function listarCategorias() {
 }
 
 function listarRemediosPorCategoria(categoriaEscolhida) {
-  console.log(`Você escolheu a categoria: ${categoriaEscolhida}`);
-  console.log(`Aqui estão os remédios disponíveis dessa categoria:`);
+  console.log(`\nVocê escolheu a categoria: ${categoriaEscolhida}`);
+  console.log(`\nAqui estão os remédios disponíveis dessa categoria:`);
   let remediosCategoria = remedios.filter(
     (remedio) => remedio.categoria === categoriaEscolhida
   );
@@ -205,24 +206,26 @@ let continuarComprando = false;
 
 function venda() {
   do {
+    console.log("\nCategorias disponiveis: ");
     listarCategorias();
     let escolhaCategoria = Number(
-      prompt("Digite o número da categoria que você deseja: ")
+      prompt(chalk.yellow("\nDigite o número da categoria que você deseja: "))
     );
     let categoriaEscolhida = categorias[escolhaCategoria - 1];
     let remediosCategoria = listarRemediosPorCategoria(categoriaEscolhida);
 
     let adicionarMaisRemedios = false;
     do {
+      console.log("");
       let codigoRemedio = Number(
-        prompt(`Digite o código do remédio que você deseja: `)
+        prompt(chalk.yellow(`Digite o código do remédio que você deseja: `))
       );
       let remedioSelecionado = remediosCategoria.find(
         (remedio) => remedio.id === codigoRemedio
       );
       if (!remedioSelecionado) {
         console.log(
-          `Este código não existe ou não pertence à categoria escolhida.`
+         chalk.red(`Este código não existe ou não pertence à categoria escolhida.`)
         );
       } else {
         if (remedioSelecionado.controlado) {
@@ -233,21 +236,23 @@ function venda() {
             carrinho.push(remedioSelecionado);
           } else {
             console.log(
-              `Você não pode adicionar ${remedioSelecionado.nome} ao carrinho sem receita.`
+              chalk.red(`Você não pode adicionar ${remedioSelecionado.nome} ao carrinho sem receita.`)
             );
           }
         } else {
           carrinho.push(remedioSelecionado);
         }
       }
+      console.log("");
       let continuar = prompt(
-        `Deseja adicionar outro remédio desta categoria? sim ou nao? `
+        chalk.yellow(`Deseja adicionar outro remédio desta categoria? sim ou nao? `)
       );
       adicionarMaisRemedios = continuar.toLowerCase() === "sim";
     } while (adicionarMaisRemedios);
 
+    console.log("");
     let continuarCategoria = prompt(
-      `Deseja adicionar remédios de outra categoria? sim ou nao? `
+      chalk.yellow(`Deseja adicionar remédios de outra categoria? sim ou nao? `)
     );
     continuarComprando = continuarCategoria.toLowerCase() === "sim";
   } while (continuarComprando);
@@ -255,9 +260,11 @@ function venda() {
 
 function loopPrincipal() {
   while (true) {
-    console.log(`1 - Vender\n2 - Atualizar Remédio\n3 - Ir para o Carrinho`);
+    console.log(chalk.blue(`\nOlá, estas são as categorias disponíveis:`));
+    console.log(`\n1 - Vender\n2 - Atualizar Remédio\n3 - Ir para o Carrinho`);
+    console.log("");
     let operacao = Number(
-      prompt(`Digite o número referente a operação a qual você irá realizar: `)
+      prompt(chalk.yellow(`Digite o número referente a operação a qual você irá realizar: `))
     );
     switch (operacao) {
       case 1:
@@ -291,12 +298,12 @@ function calcularTotal(lista) {
 
 exibirRemedios(carrinho, "selecionou");
 
-let confirmaCompra = prompt(`Você deseja concluir sua compra? sim ou nao? `);
+let confirmaCompra = prompt(chalk.blue(`Você deseja concluir sua compra? (`) + chalk.green('sim') + chalk.blue('/') + chalk.red('nao') + chalk.blue(`?)`));
 if (confirmaCompra.toLowerCase() === "sim") {
-  console.log(`Obrigado pela compra! `);
+  console.log(chalk.green(`Obrigado pela compra!`));
   exibirRemedios(carrinho, "comprou");
   let totalCompra = calcularTotal(carrinho);
-  console.log(`O valor total da sua compra é: R$${totalCompra}`);
+  console.log(chalk.bold(`O valor total da sua compra é: R$${totalCompra}`));
 
   // Atualizar a quantidade dos remédios no estoque
   for (let remedio of carrinho) {
@@ -307,14 +314,16 @@ if (confirmaCompra.toLowerCase() === "sim") {
   }
   salvarRemedios(remedios); // Salva as alterações de remedios no arquivo diretamente no JSON
 } else {
-  console.log(`Compra cancelada com sucesso!`);
+  console.log(chalk.red(`Compra cancelada com sucesso!`));
 }
 
-console.log(`\n
-███████╗ █████╗ ██████╗ ███╗   ███╗ █████╗ ████████╗███████╗██╗  ██╗
-██╔════╝██╔══██╗██╔══██╗████╗ ████║██╔══██╗╚══██╔══╝██╔════╝╚██╗██╔╝
-█████╗  ███████║██████╔╝██╔████╔██║███████║   ██║   █████╗   ╚███╔╝ 
-██╔══╝  ██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║   ██║   ██╔══╝   ██╔██╗ 
-██║     ██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║   ██║   ███████╗██╔╝ ██╗
-╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
-`);
+function logo () {
+  console.log(chalk.blue(`\n
+    ███████╗ █████╗ ██████╗ ███╗   ███╗ █████╗ ████████╗███████╗ ██████╗██╗  ██╗
+    ██╔════╝██╔══██╗██╔══██╗████╗ ████║██╔══██╗╚══██╔══╝██╔════╝██╔════╝██║  ██║
+    █████╗  ███████║██████╔╝██╔████╔██║███████║   ██║   █████╗  ██║     ███████║
+    ██╔══╝  ██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║   ██║   ██╔══╝  ██║     ██╔══██║
+    ██║     ██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║   ██║   ███████╗╚██████╗██║  ██║
+    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝                                                                            
+  `));
+}
