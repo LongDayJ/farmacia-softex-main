@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "nome": "",
+    "nome": "Para",
     "preco": 10,
     "categoria": "analgesico",
     "controlado": false,
-    "quantidade": 20
+    "quantidade": 19
   },
   {
     "id": 2,
