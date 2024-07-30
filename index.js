@@ -1,8 +1,13 @@
 import promptSync from "prompt-sync";
 import chalk from "chalk";
-import { logo } from "./visual.js";
+import { littleLogo, logo } from "./visual.js";
 import { listaRemedios, salvarRemedios, updateMedicine } from "./medicine.js";
-import { criarFuncionario, salvarFuncionarios, carregarFuncionarios, loginFuncionario } from "./workers.js";
+import {
+  criarFuncionario,
+  salvarFuncionarios,
+  carregarFuncionarios,
+  loginFuncionario,
+} from "./workers.js";
 import { venda, exibirRemedios, calcularTotal } from "./controller.js";
 
 const prompt = promptSync();
@@ -17,8 +22,16 @@ let carrinho = [];
 function loopPrincipal() {
   while (loopPrincipalBool) {
     console.log(chalk.blue(`Bem-vindo à FarmaTech!`));
-    console.log(`\nOque você deseja fazer?\n1 - Criar Conta\n2 - Login\n3 - Sair`);
-    let operacao = Number(prompt(chalk.yellow(`Digite o número referente a operação a qual você irá realizar: `)));
+    console.log(
+      `\nOque você deseja fazer?\n1 - Criar Conta\n2 - Login\n3 - Sair`
+    );
+    let operacao = Number(
+      prompt(
+        chalk.yellow(
+          `Digite o número referente a operação a qual você irá realizar: `
+        )
+      )
+    );
     switch (operacao) {
       case 1:
         criarFuncionario();
@@ -34,15 +47,25 @@ function loopPrincipal() {
         return false;
     }
   }
-
 }
 
 function logedOperations(funcionario) {
   while (true) {
-    console.log(chalk.blue(`\n${funcionario.nome}, estas são as categorias disponíveis:`));
-    console.log(`\n1 - Vender\n2 - Atualizar Remédio(Apenas para administradores)\n3 - Ir para o Carrinho`);
+    littleLogo();
+    console.log(
+      chalk.blue(`\n${funcionario.nome}, estas são as categorias disponíveis:`)
+    );
+    console.log(
+      `\n1 - Vender\n2 - Atualizar Remédio(Apenas para administradores)\n3 - Ir para o Carrinho`
+    );
     console.log("");
-    let operacao = Number(prompt(chalk.yellow(`Digite o número referente a operação a qual você irá realizar: `)));
+    let operacao = Number(
+      prompt(
+        chalk.yellow(
+          `Digite o número referente a operação a qual você irá realizar: `
+        )
+      )
+    );
     switch (operacao) {
       case 1:
         venda(carrinho);

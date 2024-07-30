@@ -76,10 +76,10 @@ function venda(carrinho) {
       console.log("");
       let continuar = prompt(
         chalk.yellow(`Deseja adicionar outro remédio desta categoria? (`) +
-        chalk.green(`s`) +
-        chalk.yellow(`/`) +
-        chalk.red(`n`) +
-        chalk.yellow(`)`)
+          chalk.green(`s`) +
+          chalk.yellow(`/`) +
+          chalk.red(`n`) +
+          chalk.yellow(`)`)
       );
       adicionarMaisRemedios = continuar.toLowerCase() === "s";
     } while (adicionarMaisRemedios);

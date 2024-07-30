@@ -1,7 +1,7 @@
 import fs from "fs";
 import chalk from "chalk";
 import promptSync from "prompt-sync";
-import funcionarios from './funcionarios.json' assert { type: 'json' };
+import funcionarios from "./funcionarios.json" assert { type: "json" };
 const prompt = promptSync();
 
 function salvarFuncionarios() {
@@ -26,7 +26,9 @@ function carregarFuncionarios() {
 function criarFuncionario() {
   console.log(chalk.blue("Bem vindo ao sistema de cadastro de funcionario!"));
   console.log("");
-  let id = prompt("Digite o cpf do funcionário (sem pontuação, apenas números): ");
+  let id = prompt(
+    "Digite o cpf do funcionário (sem pontuação, apenas números): "
+  );
   let nome = prompt("Digite o nome do funcionário: ");
   let email = prompt("Digite o email do funcionário: ");
   let pin = prompt("Peça para o funcionário inserir uma senha: ");
@@ -63,7 +65,10 @@ function loginFuncionario() {
   let funcionarioEncontrado = false;
 
   for (let i = 0; i < funcionarios.length; i++) {
-    if (loginEmail === funcionarios[i].email && loginPin === funcionarios[i].pin) {
+    if (
+      loginEmail === funcionarios[i].email &&
+      loginPin === funcionarios[i].pin
+    ) {
       funcionarioEncontrado = true;
       return funcionarios[i];
     }
@@ -74,4 +79,9 @@ function loginFuncionario() {
   }
 }
 
-export { criarFuncionario, salvarFuncionarios, carregarFuncionarios, loginFuncionario };
+export {
+  criarFuncionario,
+  salvarFuncionarios,
+  carregarFuncionarios,
+  loginFuncionario,
+};
