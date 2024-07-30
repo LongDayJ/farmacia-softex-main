@@ -58,9 +58,9 @@ function venda(carrinho) {
       } else {
         if (remedioSelecionado.controlado) {
           let temReceita = prompt(
-            `Você tem receita para ${remedioSelecionado.nome}? sim ou nao? `
+            `Você tem receita para ${remedioSelecionado.nome}? (s/n) `
           );
-          if (temReceita.toLowerCase() === "sim") {
+          if (temReceita.toLowerCase() === "s") {
             carrinho.push(remedioSelecionado);
           } else {
             console.log(
@@ -79,7 +79,7 @@ function venda(carrinho) {
           chalk.green(`s`) +
           chalk.yellow(`/`) +
           chalk.red(`n`) +
-          chalk.yellow(`)`)
+          chalk.yellow(`) `)
       );
       adicionarMaisRemedios = continuar.toLowerCase() === "s";
     } while (adicionarMaisRemedios);
@@ -90,7 +90,7 @@ function venda(carrinho) {
         chalk.green(`s`) +
         chalk.yellow(`/`) +
         chalk.red(`n`) +
-        chalk.yellow(`)`)
+        chalk.yellow(`) `)
     );
     continuarComprando = continuarCategoria.toLowerCase() === "s";
   } while (continuarComprando);

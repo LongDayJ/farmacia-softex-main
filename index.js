@@ -89,7 +89,7 @@ let confirmaCompra = prompt(
     chalk.green("s") +
     chalk.blue("/") +
     chalk.red("n") +
-    chalk.blue(`)`)
+    chalk.blue(`) `)
 );
 if (confirmaCompra.toLowerCase() === "s") {
   console.log(chalk.green(`Obrigado pela compra!`));
