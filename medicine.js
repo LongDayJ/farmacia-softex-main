@@ -16,14 +16,7 @@ function listaRemedios() {
   }
 }
 
-// Função para salvar os remédios no arquivo JSON
-function salvarRemedios() {
-  try {
-    fs.writeFileSync("./db.json", JSON.stringify(remedios, null, 2), "utf-8"); // utiliza o writeFileSync do módulo fs para escrever a string JSON no arquivo db.json. O JSON.stringfy converte o objeto remedios em uma string JSON
-  } catch (err) {
-    console.error("Erro ao salvar o arquivo JSON:", err);
-  }
-}
+
 
 function updateMedicine(funcionario) {
   if (funcionario.administrator == true) {
@@ -121,4 +114,4 @@ function updateMedicine(funcionario) {
   }
 }
 
-export { listaRemedios, salvarRemedios, updateMedicine };
+export { listaRemedios, updateMedicine };

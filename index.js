@@ -1,7 +1,8 @@
 import promptSync from "prompt-sync";
 import chalk from "chalk";
+import fs from "fs";
 import { littleLogo, logo } from "./visual.js";
-import { listaRemedios, salvarRemedios, updateMedicine } from "./medicine.js";
+import { listaRemedios, updateMedicine } from "./medicine.js";
 import {
   criarFuncionario,
   salvarFuncionarios,
@@ -11,6 +12,15 @@ import {
 import { venda, exibirRemedios, calcularTotal } from "./controller.js";
 
 const prompt = promptSync();
+
+// Função para salvar os remédios no arquivo JSON
+function salvarRemedios() {
+  try {
+    fs.writeFileSync("./db.json", JSON.stringify(remedios, null, 2), "utf-8"); // utiliza o writeFileSync do módulo fs para escrever a string JSON no arquivo db.json. O JSON.stringfy converte o objeto remedios em uma string JSON
+  } catch (err) {
+    console.error("Erro ao salvar o arquivo JSON:", err);
+  }
+}
 
 logo();
 // Carregar remédios do arquivo JSON
