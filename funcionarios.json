@@ -82,5 +82,12 @@
     "email": "7",
     "pin": "7",
     "administrador": true
+  },
+  {
+    "id": "85128719464",
+    "nome": "Carlos Eduardo",
+    "email": "saopaolinobotgap@gmail.com",
+    "pin": "calleri9",
+    "administrador": false
   }
 ]

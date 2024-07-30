@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "nome": "Para",
+    "nome": "Paracetamol",
     "preco": 10,
     "categoria": "analgesico",
     "controlado": false,
