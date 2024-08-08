@@ -13,7 +13,7 @@
     "preco": 15,
     "categoria": "analgesico",
     "controlado": false,
-    "quantidade": 20
+    "quantidade": 19
   },
   {
     "id": 3,
@@ -85,7 +85,7 @@
     "preco": 40,
     "categoria": "antibiotico",
     "controlado": true,
-    "quantidade": 20
+    "quantidade": 19
   },
   {
     "id": 12,

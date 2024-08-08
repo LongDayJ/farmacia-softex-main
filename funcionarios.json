@@ -89,5 +89,12 @@
     "email": "saopaolinobotgap@gmail.com",
     "pin": "calleri9",
     "administrador": false
+  },
+  {
+    "id": "24565996081",
+    "nome": "Bruno",
+    "email": "Bruno@softex.com",
+    "pin": "softex1234",
+    "administrador": true
   }
 ]
